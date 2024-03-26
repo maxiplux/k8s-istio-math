@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: s-math-division-multiplication
+  namespace: weclouddata
+spec:
+  selector:
+    app: math-add-subtract
+  ports:
+    - protocol: TCP
+      port: 8082
+      targetPort: 8082
+  type: LoadBalancer

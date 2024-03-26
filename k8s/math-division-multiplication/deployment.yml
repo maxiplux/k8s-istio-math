@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: math-division-multiplication
+  namespace: weclouddata
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: math-division-multiplication
+  template:
+    metadata:
+      labels:
+        app: math-division-multiplication
+    spec:
+      containers:
+      - name: math-division-multiplication
+        env:
+          - name: PORT
+            value: "8081"
+        image: maxiplux/math-division-multiplication:1.0.0
+        securityContext:
+          allowPrivilegeEscalation: false
+          runAsUser: 0
+        ports:
+        - containerPort: 8081

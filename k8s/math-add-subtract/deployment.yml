@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: math-division-multiplication
+  namespace: weclouddata
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: math-add-subtract
+  template:
+    metadata:
+      labels:
+        app: math-add-subtract
+    spec:
+      containers:
+      - name: math-add-subtract
+        env:
+          - name: PORT
+            value: "8082"
+        image: maxiplux/math-add-subtract:1.0.0
+        securityContext:
+          allowPrivilegeEscalation: false
+          runAsUser: 0
+        ports:
+        - containerPort: 8082
