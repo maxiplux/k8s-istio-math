@@ -1,6 +1,8 @@
 package app.quantun.math.controllers;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,23 +13,30 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class Home {
 
-        @RequestMapping(value = "/add", method = RequestMethod.POST)
+        @RequestMapping(value = "/multiplication", method = RequestMethod.POST)
 
-        public Integer add(@RequestParam( required = true,  name = "a") Integer a, @RequestParam(required = true,  name = "b") Integer b) {
+        public Double multiplication(@RequestParam( required = true,  name = "a") Double a, @RequestParam(required = true,  name = "b") Double b) {
             if (a == null || b == null) {
                 log.error("Invalid input" );
-                return 0;
+                return 0.0;
             }
 
-            return a + b;
+            return a * b;
+        }
+    //division and multiplication
+    @RequestMapping(value = "/division", method = RequestMethod.POST)
+    public ResponseEntity<?> division(@RequestParam("a") Double a, @RequestParam("b") Double b) {
+
+        if (a == null || b == null) {
+            log.error("Invalid input" );
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid input A or B is null");
+        }
+        if (b == 0) {
+            log.error("Invalid input" );
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid input B");
         }
 
-    @RequestMapping(value = "/subtract", method = RequestMethod.POST)
-    public Integer subtract(@RequestParam("a") Integer a, @RequestParam("b") Integer b) {
-        if (a == null || b == null) {
-            return 0;
-        }
-        return a - b;
+        return  ResponseEntity.ok(a / b);
     }
 
 }
