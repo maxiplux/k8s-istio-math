@@ -49,7 +49,9 @@ public class Home {
 
 
     @RequestMapping(value = "/subtract", method = RequestMethod.POST)
+    
     @Timed(value = "subtract", longTask = true)
+
     public Integer subtract(@RequestParam("a") Integer a, @RequestParam("b") Integer b) {
             this.sleep();
             this.hitsCounterToSubtract.increment();

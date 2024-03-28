@@ -13,4 +13,4 @@ RUN mkdir /app
 COPY --from=build /home/gradle/src/build/libs/math-0.0.1-SNAPSHOT.jar /app/spring-boot-application.jar
 
 ENTRYPOINT ["java","--enable-preview",  "-Djava.security.egd=file:/dev/./urandom","-jar","/app/spring-boot-application.jar"]
-#docker buildx build --platform=linux/arm64,linux/amd64 --push --tag maxiplux/math-add-subtract:1.0.0 -f ./Dockerfile .
+#docker buildx build --platform=linux/arm64,linux/amd64 --push --tag maxiplux/math-add-subtract:1.1.0 -f ./Dockerfile .
