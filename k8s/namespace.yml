@@ -2,3 +2,7 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: weclouddata
+  #kubectl label namespace weclouddata istio-injection=enabled
+  #kubectl port-forward svc/grafana 3000:3000 -n istio-system
+  #kubectl port-forward svc/prometheus  9090:9090 -n istio-system
+

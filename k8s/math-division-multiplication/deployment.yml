@@ -10,6 +10,10 @@ spec:
       app: math-division-multiplication
   template:
     metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/actuator/prometheus"
+        prometheus.io/port: "8081"
       labels:
         app: math-division-multiplication
     spec:

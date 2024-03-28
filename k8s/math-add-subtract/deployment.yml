@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: math-division-multiplication
+  name: math-add-subtract
   namespace: weclouddata
 spec:
   replicas: 1
@@ -10,6 +10,10 @@ spec:
       app: math-add-subtract
   template:
     metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/actuator/prometheus"
+        prometheus.io/port: "8082"
       labels:
         app: math-add-subtract
     spec:
