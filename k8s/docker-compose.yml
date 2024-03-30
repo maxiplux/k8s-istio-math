@@ -1,24 +1,49 @@
 version: '3.8'
 services:
-  math-division-multiplication:
-    image: maxiplux/math-division-multiplication:1.0.0
+  eureka-server:
+    image: maxiplux/eureka-server:1.0.0
     restart: always
+    privileged: true
+    user: root
+    environment:
+      - PORT=8045
+    ports:
+      - 8045:8045
+    container_name: eureka-server
+  loki:
+    image: grafana/loki:2.9.2
+    ports:
+      - "3100:3100"
+  math-division-multiplication:
+    image: maxiplux/math-division-multiplication:1.5.0
+    restart: always
+    depends_on:
+      - eureka-server
+      - loki
     privileged: true
     user: root
     environment:
       - PORT=8081
+      - EUREKA_SERVER=eureka-server
+      - SERVER_LOKI=loki:3100
     ports:
       - 8081:8081
     container_name: math-division-multiplication
   math-add-subtract:
-    image: maxiplux/math-add-subtract:1.0.0
+    image: maxiplux/math-add-subtract:1.5.0
     restart: always
     privileged: true
+    depends_on:
+      - eureka-server
+      - loki
     user: root
     environment:
       - PORT=8082
+      - EUREKA_SERVER=eureka-server
+      - SERVER_LOKI=loki:3100
     ports:
       - 8082:8082
     container_name: math-add-subtract
+
 #http://127.0.0.1:8081/swagger-ui/index.html#/home
 #http://127.0.0.1:8082/swagger-ui/index.html#/home
