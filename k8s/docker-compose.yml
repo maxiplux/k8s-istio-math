@@ -46,20 +46,24 @@ services:
     container_name: math-add-subtract
 
   api-gateway:
-    image: maxiplux/api-gate-way:1.5.1
-    restart: always
+    image: maxiplux/api-gate-way:1.5.2
+    restart: unless-stopped
     privileged: true
     depends_on:
       - math-add-subtract
       - math-division-multiplication
     user: root
+    links:
+      - eureka-server
+      - math-add-subtract
+      - math-division-multiplication
     environment:
       - PORT=8075
       - EUREKA_SERVER=eureka-server
       - SERVER_LOKI=loki:3100
-      - SERVER_ADD_SUBTRACT=math-add-subtract
+      - SERVER_ADD_SUBTRACT=MATH-ADD-SUBTRACT
       - SERVER_ADD_SUBTRACT_PORT=8082
-      - SERVER_DIVISION_MULTIPLICATION=math-division-multiplication
+      - SERVER_DIVISION_MULTIPLICATION=MATH-DIVISION-MULTIPLICATION
       - SERVER_DIVISION_MULTIPLICATION_PORT=8081
     ports:
       - 8075:8075
