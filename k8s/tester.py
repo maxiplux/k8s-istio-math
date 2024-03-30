@@ -19,8 +19,8 @@ def main():
     for i in range (0,1000):
         random_number = random.randint(0,500)
         server="localhost"
-        port=31264
-        port2=32342
+        port=30087
+        port2=31280
 
         calls = [
             (server,"multiplication",random_number,random.randint(0,500),port),

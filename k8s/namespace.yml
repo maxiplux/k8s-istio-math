@@ -10,5 +10,8 @@ metadata:
   #kubectl get pods
   #python tester.py
   #kubectl get svc --all-namespaces
-
+  #kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
+  #kubectl -n istio-system port-forward service/istio-ingressgateway 8080:80
+  #kubectl -n weclouddata  get vs
+  #kubectl get virtualservice -n weclouddata  -o wide
 

@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: loki
+  namespace: weclouddata
+spec:
+  type: ExternalName
+  externalName: loki.istio-system.svc.cluster.local
+  ports:
+    - port: 3100
+
+

@@ -20,9 +20,12 @@ spec:
       containers:
       - name: math-add-subtract
         env:
+          - name: SERVER_LOKI
+            value: "loki:3100"
           - name: PORT
             value: "8082"
-        image: maxiplux/math-add-subtract:1.3.0
+
+        image: maxiplux/math-add-subtract:1.4.0
         securityContext:
           allowPrivilegeEscalation: false
           runAsUser: 0
