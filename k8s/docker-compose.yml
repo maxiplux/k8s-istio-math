@@ -45,5 +45,25 @@ services:
       - 8082:8082
     container_name: math-add-subtract
 
+  api-gateway:
+    image: maxiplux/math-add-subtract:1.5.0
+    restart: always
+    privileged: true
+    depends_on:
+      - math-add-subtract
+      - math-division-multiplication
+    user: root
+    environment:
+      - PORT=8075
+      - EUREKA_SERVER=eureka-server
+      - SERVER_LOKI=loki:3100
+      - SERVER_ADD_SUBTRACT=math-add-subtract
+      - SERVER_ADD_SUBTRACT_PORT=8082
+      - SERVER_DIVISION_MULTIPLICATION=math-division-multiplication
+      - SERVER_DIVISION_MULTIPLICATION_PORT=8081
+    ports:
+      - 8075:8075
+    container_name: api-gateway
+
 #http://127.0.0.1:8081/swagger-ui/index.html#/home
 #http://127.0.0.1:8082/swagger-ui/index.html#/home
