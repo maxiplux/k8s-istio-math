@@ -18,17 +18,16 @@ public class Home {
     private Counter hitsCounterToSubtract;
     private Counter hitsCounterToadd;
 
-    public void setRegistryHitsCounterToSubtract(MeterRegistry registry) {
+    public  Home(MeterRegistry registry) {
         hitsCounterToSubtract = Counter.builder("hitsCounterToSubtract")
                 .description("Number of hits  to the subtract")
                 .register(registry);
-    }
-
-    public void setRegistryHitsCounterToAdd(MeterRegistry registry) {
         hitsCounterToadd = Counter.builder("hitsCounterToadd")
                 .description("Number of hits  to  add")
                 .register(registry);
     }
+
+ 
 
         @RequestMapping(value = "/add", method = RequestMethod.POST)
         @Timed(value = "add", longTask = true)
