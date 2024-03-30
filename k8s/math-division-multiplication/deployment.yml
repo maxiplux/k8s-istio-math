@@ -22,7 +22,7 @@ spec:
         env:
           - name: PORT
             value: "8081"
-        image: maxiplux/math-division-multiplication:1.2.0
+        image: maxiplux/math-division-multiplication:1.3.0
         securityContext:
           allowPrivilegeEscalation: false
           runAsUser: 0
