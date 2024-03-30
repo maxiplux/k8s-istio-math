@@ -33,6 +33,9 @@ dependencies {
     //open apidoc
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0'
 
+    implementation group: 'com.github.loki4j', name: 'loki-logback-appender', version: '1.5.1'
+    implementation group: 'net.logstash.logback', name: 'logstash-logback-encoder', version: '7.0.1'
+
 }
 
 tasks.named('test') {
