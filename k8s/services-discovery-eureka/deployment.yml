@@ -4,7 +4,7 @@ metadata:
   name: eureka-server
   namespace: weclouddata
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: eureka-server

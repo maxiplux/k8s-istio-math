@@ -4,7 +4,7 @@ metadata:
   name: math-division-multiplication
   namespace: weclouddata
 spec:
-  replicas: 2
+  replicas: 4
   selector:
     matchLabels:
       app: math-division-multiplication

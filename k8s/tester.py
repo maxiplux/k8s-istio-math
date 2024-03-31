@@ -3,9 +3,10 @@ import random
 from multiprocessing import Process
 
 
-def calll_api(server="localhost",services="division",a=5, b=7,port=31264):
+def calll_api(route="division-multiplication",server="localhost",services="division",a=5, b=7,port=31264):
 
-    url = f"http://{server}:{port}/api/v1/math/{services}?a={a}&b={b}"
+
+    url = f"http://{server}:{port}/{route}/api/v1/math/{services}?a={a}&b={b}"
     payload={}
     headers = {}
     response = requests.request("POST", url, headers=headers, data=payload)
@@ -19,15 +20,15 @@ def main():
     for i in range (0,1000):
         random_number = random.randint(0,500)
         server="localhost"
-        port=30087
-        port2=31280
+        port=30380
+
 
         calls = [
-            (server,"multiplication",random_number,random.randint(0,500),port),
-            (server,"division",random_number,random.randint(0,1),port),
+            ('division-multiplication',server,"multiplication",random_number,random.randint(0,500),port),
+            ('division-multiplication',server,"division",random_number,random.randint(0,1),port),
 
-            (server,"subtract",random_number,random.randint(0,500),port2),
-            (server,"add",random_number,random.randint(0,1),port2),
+            ('add-subtract',server,"subtract",random_number,random.randint(500,9500),port),
+            ('add-subtract',server,"add",random_number,random.randint(-500,1000),port),
         ]
 
 

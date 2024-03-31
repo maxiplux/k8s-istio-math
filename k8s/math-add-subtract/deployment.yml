@@ -4,7 +4,7 @@ metadata:
   name: math-add-subtract
   namespace: weclouddata
 spec:
-  replicas: 2
+  replicas: 4
   selector:
     matchLabels:
       app: math-add-subtract

@@ -4,7 +4,7 @@ metadata:
   name: api-gateway
   namespace: weclouddata
 spec:
-  replicas: 1
+  replicas: 4
   selector:
     matchLabels:
       app: api-gateway
