@@ -46,7 +46,7 @@ services:
     container_name: math-add-subtract
 
   api-gateway:
-    image: maxiplux/api-gate-way:1.8.1
+    image: maxiplux/api-gate-way:1.8.2
     restart: unless-stopped
     privileged: true
     depends_on:
