@@ -1,34 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: math-division-multiplication
+  name: eureka-server
   namespace: weclouddata
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: math-division-multiplication
+      app: eureka-server
   template:
     metadata:
       annotations:
         prometheus.io/scrape: "true"
         prometheus.io/path: "/actuator/prometheus"
-        prometheus.io/port: "8081"
+        prometheus.io/port: "8082"
       labels:
-        app: math-division-multiplication
+        app: eureka-server
     spec:
       containers:
-      - name: math-division-multiplication
+      - name: eureka-server
         env:
           - name: SERVER_LOKI
-            value : "loki:3100"
-          - name: EUREKA_SERVER
-            value: "eureka-server"
+            value: "loki:3100"
           - name: PORT
-            value: "8081"
-        image: maxiplux/math-division-multiplication:1.5.0
+            value: "8045"
+
+        image: maxiplux/eureka-server:1.0.0
         securityContext:
           allowPrivilegeEscalation: false
           runAsUser: 0
         ports:
-        - containerPort: 8081
+        - containerPort: 8045

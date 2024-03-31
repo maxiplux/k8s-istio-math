@@ -4,7 +4,7 @@ metadata:
   name: math-add-subtract
   namespace: weclouddata
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: math-add-subtract
@@ -20,12 +20,14 @@ spec:
       containers:
       - name: math-add-subtract
         env:
+          - name: EUREKA_SERVER
+            value: "eureka-server"
           - name: SERVER_LOKI
             value: "loki:3100"
           - name: PORT
             value: "8082"
 
-        image: maxiplux/math-add-subtract:1.4.0
+        image: maxiplux/math-add-subtract:1.5.0
         securityContext:
           allowPrivilegeEscalation: false
           runAsUser: 0
