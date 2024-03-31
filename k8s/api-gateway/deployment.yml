@@ -25,6 +25,18 @@ spec:
           - name: PORT
             value: "8075"
 
+          - name: EUREKA_SERVER
+            value: "eureka-server"
+          - name: SERVER_ADD_SUBTRACT
+            value: "math-add-subtract"
+          - name: SERVER_ADD_SUBTRACT_PORT
+            value: "8082"
+          - name: SERVER_DIVISION_MULTIPLICATION
+            value: "math-division-multiplication"
+          - name: SERVER_DIVISION_MULTIPLICATION_PORT
+            value: "8081"
+
+
         image: maxiplux/api-gate-way:2.0.0
         securityContext:
           allowPrivilegeEscalation: false
