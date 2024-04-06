@@ -30,12 +30,10 @@ pipeline {
             steps {
                 script {
 
-                    try {
-                        sh './gradlew wrapper --gradle-version=8.7 --distribution-type=bin test'
-                        sh "exit 0"
-                    } catch (Exception err) {
-                        currentBuild.result = 'SUCCESS'
-                    }
+                    
+                        sh './gradlew wrapper --gradle-version=8.7 --distribution-type=bin'
+              
+                    
                     
                     
                 }
