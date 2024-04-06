@@ -15,7 +15,7 @@ pipeline {
             steps {
                 script {
                     
-                    
+                    sh 'pwd'
                     
                     sh './gradlew clean build'
                 }
