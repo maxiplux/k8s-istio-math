@@ -66,7 +66,7 @@ pipeline {
                     def commitId = sh(returnStdout: true, script: 'git rev-parse HEAD').trim()
 
                     // Build the Docker image with the commit ID as a build argument
-                    sh "docker buildx build --platform=linux/amd64 --push --tag  $DOCKER_USERNAME/math-add-subtract:${commitId} -f ./Dockerfile ."
+                    sh "docker buildx build --platform=linux/amd64 --push --tag  $DOCKER_USERNAME/math-division-multiplication:${commitId} -f ./Dockerfile ."
                  
                   
                 }
