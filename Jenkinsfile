@@ -25,7 +25,7 @@ pipeline {
         stage('Unit Testing') {
             steps {
                 script {
-                    sh './gradlew test'
+                    sh 'gradle test'
                 }
                 post {
                 // Define actions based on the outcome of the Test stage
