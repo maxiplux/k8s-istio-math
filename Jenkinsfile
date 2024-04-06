@@ -32,7 +32,7 @@ pipeline {
 
                     try {
                         sh './gradlew wrapper --gradle-version=8.7 --distribution-type=bin test'
-                        sh "exit 1"
+                        sh "exit 0"
                     } catch (Exception err) {
                         currentBuild.result = 'SUCCESS'
                     }
