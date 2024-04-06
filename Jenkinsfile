@@ -26,7 +26,7 @@ pipeline {
             steps {
                 script {
                      
-                        sh './gradlew wrapper --gradle-version=8.7 --distribution-type=bin build'
+                        sh './gradlew wrapper --gradle-version=8.7 --distribution-type=bin clean build'
                         currentBuild.result = 'SUCCESS'
                         
                    
