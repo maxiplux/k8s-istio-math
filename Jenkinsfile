@@ -11,7 +11,7 @@ pipeline {
                 checkout scm
             }
         }
-        stage('build') {
+        stage('build and test') {
             steps {
                 script {
                     
@@ -26,37 +26,7 @@ pipeline {
             }
         }
 
-        stage('Unit Testing') {
-            steps {
-                script {
 
-                    
-                        sh './gradlew wrapper --gradle-version=8.7 --distribution-type=bin clean build'
-                        currentBuild.result = 'SUCCESS'
-              
-                    
-                    
-                    
-                }
-                post {
-                // Define actions based on the outcome of the Test stage
-                always {
-                    // Actions that should always happen regardless of the outcome.
-                    // For example, you could archive test reports.
-                    archiveArtifacts artifacts: 'build/reports/tests/test/', allowEmptyArchive: true
-                }
-                success {
-                    // Actions to perform if the Test stage succeeds.
-                    echo 'Tests passed successfully.'
-                }
-                failure {
-                    // Actions to perform if the Test stage fails.
-                    echo 'Tests failed.'
-                }
-            }
-
-            }
-        }
         stage('Docker Login') {
             steps {
                 script {
