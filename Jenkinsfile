@@ -17,7 +17,7 @@ pipeline {
                     
                     
                     
-                    sh './gradlew wrapper --gradle-version=8.7 --distribution-type=bin clean build'
+                    sh './gradlew wrapper --gradle-version=8.0 --distribution-type=bin clean build'
                 }
             }
         }
@@ -26,8 +26,8 @@ pipeline {
             steps {
                 script {
                      
-                        sh './gradlew wrapper --gradle-version=8.7 --distribution-type=bin clean build'
-                        currentBuild.result = 'SUCCESS'
+                        sh './gradlew wrapper --gradle-version=8.0 --distribution-type=bin clean test'
+                       
                         
                    
                 }
