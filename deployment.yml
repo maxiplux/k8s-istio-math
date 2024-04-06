@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: math-add-subtract
+  namespace: weclouddata
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: math-add-subtract
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/actuator/prometheus"
+        prometheus.io/port: "8082"
+      labels:
+        app: math-add-subtract
+    spec:
+      containers:
+      - name: math-add-subtract
+        env:
+          - name: EUREKA_SERVER
+            value: "eureka-server"
+          - name: SERVER_LOKI
+            value: "loki:3100"
+          - name: PORT
+            value: "8082"
+
+        image: maxiplux/math-add-subtract:TAG_HERE
+        securityContext:
+          allowPrivilegeEscalation: false
+          runAsUser: 0
+        ports:
+        - containerPort: 8082
+
+    
