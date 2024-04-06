@@ -25,7 +25,7 @@ pipeline {
         stage('Unit Testing') {
             steps {
                 script {
-                    sh 'gradle wrapper --gradle-version=8.7 --distribution-type=bin test'
+                    sh './gradlew wrapper --gradle-version=8.7 --distribution-type=bin test'
                 }
                 post {
                 // Define actions based on the outcome of the Test stage
